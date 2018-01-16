@@ -27,24 +27,26 @@ public final class DefaultsQueue: Queue {
         return storedEvents.count
     }
     
-    // TODO: RG - Will require optimisation or replacement with CD:
     private var storedEvents: [Event] {
         get {
             do {
-                guard
-                    let eventsData = CustomDefaults.standard.value(forKey: Key.events) as? Data,
-                    let events = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(eventsData) as? [Event] else { return [] }
+                guard let eventsData = CustomDefaults.standard.value(forKey: Key.events) as? Data else { return [] }
+                let events: [Event] = try JSONDecoder().decode([Event].self, from: eventsData)
                 return events
             } catch {
-                CustomDefaults.standard.setValue(nil, forKey: Key.events)
+                PiwikTracker.shared?.logger.error("*** Failed to decode events. Removing all stored events ***")
+                removeIncompatibleEvents()
             }
-            
             return []
         }
         
         set {
-            let eventsData = NSKeyedArchiver.archivedData(withRootObject: newValue)
-            CustomDefaults.standard.setValue(eventsData, forKey: Key.events)
+            do {
+                let eventsData = try JSONEncoder().encode(newValue)
+                CustomDefaults.standard.setValue(eventsData, forKey: Key.events)
+            } catch {
+                PiwikTracker.shared?.logger.error("*** Failed to encode and store events ***")
+            }
         }
     }
     
@@ -68,5 +70,9 @@ public final class DefaultsQueue: Queue {
         storedEvents = storedEvents.filter({ event in !events.contains(where: { eventToRemove in eventToRemove.uuid == event.uuid })})
         print("Removing events: remaining stored events: \(storedEvents.count)")
         completion()
+    }
+    
+    private func removeIncompatibleEvents() {
+        CustomDefaults.standard.setValue(nil, forKey: Key.events)
     }
 }

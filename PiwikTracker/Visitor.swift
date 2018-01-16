@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Visitor: NSObject, NSCoding {
+public struct Visitor: Codable {
     /// Unique ID per visitor (device in this case). Should be
     /// generated upon first start and never changed after.
     /// api-key: _id
@@ -21,16 +21,6 @@ public class Visitor: NSObject, NSCoding {
     init(id: String, userId: String?) {
         self.id = id
         self.userId = userId
-    }
-    
-    required public init(coder aDecoder: NSCoder) {
-        self.id = aDecoder.decodeObject(forKey: "id") as? String ?? ""
-        self.userId = aDecoder.decodeObject(forKey: "userId") as? String ?? ""
-    }
-    
-    public func encode(with aCoder: NSCoder) {
-        aCoder.encode(id, forKey: "id")
-        aCoder.encode(userId, forKey: "userId")
     }
 }
 

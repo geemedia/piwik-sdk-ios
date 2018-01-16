@@ -4,26 +4,14 @@ struct EventFixture {
     static func event() -> Event {
         let visitor = Visitor(id: "spec_visitor_id", userId: "spec_user_id")
         let session = Session(sessionsCount: 0, lastVisit: Date(), firstVisit: Date())
-        let dimensions: [CustomDimension] = []
         
-        let event: Event = Event(siteId: "spec_1",
-                                 uuid: NSUUID(),
-                                 visitor: visitor,
-                                 session: session,
-                                 date: Date(),
-                                 url: URL(string: "http://spec_url")!,
-                                 actionName: ["spec_action"],
-                                 language: "spec_language",
-                                 isNewSession: true,
-                                 referer: nil,
-                                 eventCategory: nil,
-                                 eventAction: nil,
-                                 eventName: nil,
-                                 eventValue: nil,
-                                 dimensions: dimensions,
-                                 customTrackingParameters: [:])
-        
-        return event
+        return Event(siteId: "spec_1", uuid: UUID.init(), visitor: visitor, session: session, date: Date(), url: URL(string: "http://spec_url")!, actionName: ["spec_action"], language: "spec_language", isNewSession: true, referer: nil,
+                     eventCategory: nil,
+                     eventAction: nil,
+                     eventName: nil,
+                     eventValue: nil,
+                     dimensions: [],
+                     customTrackingParameters: [:])
     }
 }
 

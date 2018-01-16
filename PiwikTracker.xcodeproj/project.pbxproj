@@ -33,6 +33,7 @@
 		1FDC91801F1A65150046F506 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC917E1F1A65150046F506 /* Device.swift */; };
 		82A551CEC50ABB2EAD50FC4E /* Pods_PiwikTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68F0C25DEF98C13D32CC46DD /* Pods_PiwikTrackerTests.framework */; };
 		864D3F42200E1A67001F5BB2 /* DefaultsQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864D3F41200E1A67001F5BB2 /* DefaultsQueue.swift */; };
+		869129F0200E4D51006CCC02 /* DefaultsQueueSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869129EF200E4D51006CCC02 /* DefaultsQueueSpec.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		1FDC917E1F1A65150046F506 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		68F0C25DEF98C13D32CC46DD /* Pods_PiwikTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PiwikTrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		864D3F41200E1A67001F5BB2 /* DefaultsQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsQueue.swift; sourceTree = "<group>"; };
+		869129EF200E4D51006CCC02 /* DefaultsQueueSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsQueueSpec.swift; sourceTree = "<group>"; };
 		8F688B0F18F298B5E61552AC /* Pods-PiwikTrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PiwikTrackerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PiwikTrackerTests/Pods-PiwikTrackerTests.release.xcconfig"; sourceTree = "<group>"; };
 		FD284F50B998823EAFB0CEE9 /* Pods-PiwikTrackerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PiwikTrackerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PiwikTrackerTests/Pods-PiwikTrackerTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -174,6 +176,7 @@
 			children = (
 				1F1949F51E17B2A400458199 /* Fixtures */,
 				1F1949F31E17B06600458199 /* MemoryQueueSpec.swift */,
+				869129EF200E4D51006CCC02 /* DefaultsQueueSpec.swift */,
 				1F6F0CD81E61E377008170FC /* DispatcherStub.swift */,
 				1F6F0CD91E61E377008170FC /* QueueStub.swift */,
 				1F6F0CDB1E61E377008170FC /* TrackerSpec.swift */,
@@ -401,6 +404,7 @@
 				1F6F0CDE1E61E377008170FC /* TrackerFixtures.swift in Sources */,
 				1F1949F41E17B06600458199 /* MemoryQueueSpec.swift in Sources */,
 				1F6F0CDF1E61E377008170FC /* TrackerSpec.swift in Sources */,
+				869129F0200E4D51006CCC02 /* DefaultsQueueSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
