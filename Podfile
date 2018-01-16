@@ -6,7 +6,7 @@ abstract_target :example do
   workspace 'PiwikTracker'
 
   target :ios do
-    platform :ios, '8.0'
+    platform :ios, '9.1'
     project 'Example/ios/ios'
     pod 'PiwikTracker', path: './'
   end
@@ -27,7 +27,7 @@ end
 
 target 'PiwikTrackerTests' do
   use_frameworks!
-  platform :ios, '8.0'
+  platform :ios, '9.1'
   inhibit_all_warnings!
   workspace 'PiwikTracker'
   inherit! :search_paths
