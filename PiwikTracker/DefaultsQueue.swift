@@ -8,20 +8,17 @@
 
 import Foundation
 
-class CustomDefaults: UserDefaults {
-    override func synchronize() -> Bool {
-        print("Syncronised")
-        return super.synchronize()
-    }
-}
-
 public final class DefaultsQueue: Queue {
     
     private struct Key {
         static let events = "Events"
     }
     
-    public init() {}
+    private let defaults: UserDefaults
+    
+    public init(withDefaults defaults: UserDefaults = UserDefaults.standard) {
+        self.defaults = defaults
+    }
     
     public var eventCount: Int {
         return storedEvents.count
@@ -30,7 +27,7 @@ public final class DefaultsQueue: Queue {
     private var storedEvents: [Event] {
         get {
             do {
-                guard let eventsData = CustomDefaults.standard.value(forKey: Key.events) as? Data else { return [] }
+                guard let eventsData = defaults.value(forKey: Key.events) as? Data else { return [] }
                 let events: [Event] = try JSONDecoder().decode([Event].self, from: eventsData)
                 return events
             } catch {
@@ -43,7 +40,7 @@ public final class DefaultsQueue: Queue {
         set {
             do {
                 let eventsData = try JSONEncoder().encode(newValue)
-                CustomDefaults.standard.setValue(eventsData, forKey: Key.events)
+                defaults.setValue(eventsData, forKey: Key.events)
             } catch {
                 PiwikTracker.shared?.logger.error("*** Failed to encode and store events ***")
             }
@@ -73,6 +70,6 @@ public final class DefaultsQueue: Queue {
     }
     
     private func removeIncompatibleEvents() {
-        CustomDefaults.standard.setValue(nil, forKey: Key.events)
+        defaults.setValue(nil, forKey: Key.events)
     }
 }

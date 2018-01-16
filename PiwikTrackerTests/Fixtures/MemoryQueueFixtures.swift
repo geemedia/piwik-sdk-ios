@@ -26,3 +26,30 @@ struct MemoryQueueFixture {
         return queue
     }
 }
+
+struct DefaultsQueueFixture {
+    static func empty(withDefaults defaults: UserDefaultsFake) -> DefaultsQueue {
+        return DefaultsQueue(withDefaults: defaults)
+    }
+    static func withTwoItems(withDefaults defaults: UserDefaultsFake) -> DefaultsQueue {
+        var queue = DefaultsQueue(withDefaults: defaults)
+        queue.enqueue(event: EventFixture.event())
+        queue.enqueue(event: EventFixture.event())
+        return queue
+    }
+}
+
+class UserDefaultsFake: UserDefaults {
+    var storedData = [String: Any?]()
+    
+    override func setValue(_ value: Any?, forKey key: String) {
+        storedData[key] = value
+    }
+    
+    override func value(forKey key: String) -> Any? {
+        if let value = storedData[key] {
+            return value
+        }
+        return nil
+    }
+}
