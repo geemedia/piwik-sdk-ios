@@ -281,6 +281,7 @@
 				ORGANIZATIONNAME = "Mattias Levin";
 				TargetAttributes = {
 					CD93EC8A17E76E290062BE20 = {
+						DevelopmentTeam = N734V2YJAJ;
 						LastSwiftMigration = 0820;
 					};
 				};
@@ -547,12 +548,13 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = N734V2YJAJ;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iOS Example/Supporting Files/PiwikTrackeriOSDemo-Prefix.pch";
 				INFOPLIST_FILE = "iOS Example/Supporting Files/PiwikTrackeriOSDemo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.piwik.iostracker;
+				PRODUCT_BUNDLE_IDENTIFIER = org.piwik.iostracker.p41;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "iOS Example/ios-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -568,13 +570,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = N734V2YJAJ;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iOS Example/Supporting Files/PiwikTrackeriOSDemo-Prefix.pch";
 				INFOPLIST_FILE = "iOS Example/Supporting Files/PiwikTrackeriOSDemo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_CFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = org.piwik.iostracker;
+				PRODUCT_BUNDLE_IDENTIFIER = org.piwik.iostracker.p41;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "iOS Example/ios-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;

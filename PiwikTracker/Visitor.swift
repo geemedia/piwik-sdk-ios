@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Visitor {
+public class Visitor: NSObject, NSCoding {
     /// Unique ID per visitor (device in this case). Should be
     /// generated upon first start and never changed after.
     /// api-key: _id
@@ -17,6 +17,21 @@ struct Visitor {
     /// An optional user identifier such as email or username.
     /// api-key: uid
     let userId: String?
+    
+    init(id: String, userId: String?) {
+        self.id = id
+        self.userId = userId
+    }
+    
+    required public init(coder aDecoder: NSCoder) {
+        self.id = aDecoder.decodeObject(forKey: "id") as? String ?? ""
+        self.userId = aDecoder.decodeObject(forKey: "userId") as? String ?? ""
+    }
+    
+    public func encode(with aCoder: NSCoder) {
+        aCoder.encode(id, forKey: "id")
+        aCoder.encode(userId, forKey: "userId")
+    }
 }
 
 extension Visitor {
