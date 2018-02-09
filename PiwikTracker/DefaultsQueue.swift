@@ -41,6 +41,7 @@ public final class DefaultsQueue: Queue {
             do {
                 let eventsData = try JSONEncoder().encode(newValue)
                 defaults.setValue(eventsData, forKey: Key.events)
+                defaults.synchronize()
             } catch {
                 PiwikTracker.shared?.logger.error("*** Failed to encode and store events ***")
             }
@@ -49,8 +50,9 @@ public final class DefaultsQueue: Queue {
     
     public func enqueue(events: [Event], completion: (()->())?) {
         assertMainThread()
+        PiwikTracker.shared?.logger.debug("Enqueue events: \(events.count)")
         storedEvents.append(contentsOf: events)
-        print("Enqueue: stored events: \(storedEvents.count)")
+        PiwikTracker.shared?.logger.debug("Enqueued events: \(storedEvents.count)")
         completion?()
     }
     
@@ -65,11 +67,12 @@ public final class DefaultsQueue: Queue {
     public func remove(events: [Event], completion: () -> ()) {
         assertMainThread()
         storedEvents = storedEvents.filter({ event in !events.contains(where: { eventToRemove in eventToRemove.uuid == event.uuid })})
-        print("Removing events: remaining stored events: \(storedEvents.count)")
+        PiwikTracker.shared?.logger.debug("Removing events: remaining stored events: \(storedEvents.count)")
         completion()
     }
     
     private func removeIncompatibleEvents() {
         defaults.setValue(nil, forKey: Key.events)
+        PiwikTracker.shared?.logger.debug("Removing incompatible events")
     }
 }
