@@ -91,7 +91,7 @@ final public class PiwikTracker: NSObject {
             return
         }
         guard !isOptedOut else { return }
-        logger.verbose("Queued event: \(event)")
+      logger.verbose("Queued event: \(event) on queue: \(queue)")
         queue.enqueue(event: event)
         nextEventStartsANewSession = false
     }
