@@ -1,5 +1,11 @@
 import Foundation
 
+public protocol PiwikTrackable {
+    func track(_ event: Event)
+    func track(view: [String], url: URL?, dimensions: [CustomDimension])
+    func track(eventWithCategory category: String, action: String, name: String?, value: Float?, dimensions: [CustomDimension], url: URL?)
+}
+
 /// The Piwik Tracker is a Swift framework to send analytics to the Piwik server.
 ///
 /// ## Basic Usage
@@ -229,7 +235,7 @@ extension PiwikTracker {
     }
 }
 
-extension PiwikTracker {
+extension PiwikTracker: PiwikTrackable {
     
     /// Tracks a custom Event
     ///
